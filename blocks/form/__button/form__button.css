@@ -1,0 +1,17 @@
+.form__button {
+  background-color: black;
+  color: white;
+  height: 50px;
+  width: 358px;
+  font-size: 18px;
+  line-height: 1.22;
+  margin: 48px auto 0;
+  border-radius: 2px;
+}
+@media screen and (max-width: 500px) {
+  .form__button {
+    width: 238px;
+    font-size: 14px;
+    margin: 45px auto 0;
+  }
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img class="header__logo" src="images/logo.svg" alt="Логотип Место" />
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img
+          class="profile__avatar"
+          src="images/ProfileImage.jpg"
+          alt="Аватар"
+        />
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h2 class="profile__job">Исследователь океана</h2>
+          <img
+            class="profile__editButton button"
+            src="images/EditButton.svg"
+            alt="Кнопка Редактировать"
+          />
+        </div>
+        <div class="profile__addButton button">
+          <img src="images/CrossButton.svg" alt="Кнопка Добавить" />
+        </div>
+      </section>
+      <section class="places">
+        <ul class="cards">
+          <li class="cards__item">
+            <img
+              class="cards__image"
+              src="images/Карачаевск.png"
+              alt="Карачаевск"
+            />
+            <h2 class="cards__title">Карачаевск</h2>
+            <img
+              class="cards__like button"
+              src="images/LikeButton.svg"
+              alt="Лайк"
+            />
+          </li>
+          <li class="cards__item">
+            <img
+              class="cards__image"
+              src="images/ГораЭльбрус.png"
+              alt="Эльбрус"
+            />
+            <h2 class="cards__title">Гора Эльбрус</h2>
+            <img
+              class="cards__like button"
+              src="images/LikeButton.svg"
+              alt="Лайк"
+            />
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="images/Домбай.png" alt="Домбай" />
+            <h2 class="cards__title">Домбай</h2>
+            <img
+              class="cards__like button"
+              src="images/LikeButton.svg"
+              alt="Лайк"
+            />
+          </li>
+          <li class="cards__item">
+            <img
+              class="cards__image"
+              src="images/ГолубойЛес.jpg"
+              alt="СинийЛес"
+            />
+            <h2 class="cards__title">Голубой лес</h2>
+            <img
+              class="cards__like button"
+              src="images/LikeButton.svg"
+              alt="Лайк"
+            />
+          </li>
+          <li class="cards__item">
+            <img
+              class="cards__image"
+              src="images/ИскрящийсяКруг.jpg"
+              alt="КругИск"
+            />
+            <h2 class="cards__title">Искрящийся круг</h2>
+            <img
+              class="cards__like button"
+              src="images/LikeButton.svg"
+              alt="Лайк"
+            />
+          </li>
+          <li class="cards__item">
+            <img class="cards__image" src="images/Свет.jpg" alt="Свет" />
+            <h2 class="cards__title">Свет</h2>
+            <img
+              class="cards__like button"
+              src="images/LikeButton.svg"
+              alt="Лайк"
+            />
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__project">© 2020 Mesto Russia</p>
+    </footer>
+    <section class="popup">
+      <form class="form popup__container">
+        <fieldset class="form__input-container">
+          <img
+            src="images/CloseIcon.png"
+            alt="КнопкаЗакрытия"
+            class="popup__close button"
+          />
+          <h2 class="form__heading">Редактировать профиль</h2>
+          <input
+            class="form__item popup__user_name"
+            type="text"
+            placeholder="Ф.И.О."
+            value="Жак-Ив Кусто"
+          />
+          <input
+            class="form__item popup__user_job"
+            type="text"
+            placeholder="О себе"
+            value="Исследователь Океана"
+          />
+          <input class="form__button button" type="submit" value="Сохранить" />
+        </fieldset>
+      </form>
+    </section>
+    <script src="./script.js"></script>
+  </body>
+</html>
