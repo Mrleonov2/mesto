@@ -1,4 +1,4 @@
-.form__item {
+.popup__input {
   border: 0;
   font-size: 14px;
   line-height: 1.2;
@@ -7,11 +7,11 @@
   margin-top: 30px;
   width: 358px;
 }
-.form__item:first-of-type {
+.popup__input:first-of-type {
   margin-top: 0;
 }
-@media screen and (max-width: 500px) {
-  .form__item {
+@media screen and (max-width: 540px) {
+  .popup__input {
     width: 238px;
   }
 }
