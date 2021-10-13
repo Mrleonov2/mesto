@@ -1,5 +1,10 @@
-.page{
+.page {
   background-color: black;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+@media screen and (max-width: 425px) {
+  .page {
+    min-height: 2814px;
+  }
 }

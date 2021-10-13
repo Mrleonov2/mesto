@@ -2,15 +2,17 @@
   height: 50px;
   border: 1px solid white;
   width: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 282px;
   margin-left: auto;
+  border-radius: 2px;
+  background: black url('../../../images/CrossButton.svg') center/22px 22px no-repeat;
+}
+.profile__button-add:hover {
+ opacity: .6;
 }
 @media screen and (max-width: 740px) {
   .profile__button-add {
     width: 100%;
     margin: 36px 0 0;
+    background: black url('../../../images/CrossButton.svg') center/16px 16px no-repeat;
   }
 }
