@@ -2,9 +2,7 @@ let popup = document.querySelector(".popup");
 let popupOpenBtn = document.querySelector(".profile__button-edit");
 let popupCloseBtn = popup.querySelector(".popup__button-close");
 // Находим форму в DOM
-let formElement = document.querySelector(".popup__container");
-let page = document.querySelector(".page");
-
+let formElement = document.querySelector(".popup__form");
 // Находим поля формы в DOM
 let inputName = popup.querySelector(".popup__input_type_name");
 let inputJob = popup.querySelector(".popup__input_type_job");
@@ -21,7 +19,6 @@ inputJob.value = profileJob.textContent;
 
 function popupToggle() {
   popup.classList.toggle("popup_opened");
-  page.classList.toggle("page_no-scroll");
 }
 
 function clickOverlay(event) {
@@ -33,9 +30,10 @@ popupOpenBtn.addEventListener("click", popupToggle);
 popup.addEventListener("click", clickOverlay);
 popupCloseBtn.addEventListener("click", popupToggle);
 
-function formSubmitHandler(evt) {
+function formSubmitHandler(evt) { 
   profileName.textContent = inputName.value;
-  profileJob.textContent = inputJob.value;
+  profileJob.textContent = inputJob.value; 
+  popupToggle();
   evt.preventDefault();
 }
 // Эта строчка отменяет стандартную отправку формы.
