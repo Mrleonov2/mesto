@@ -35,6 +35,7 @@
             />
             <h2 class="cards__title">Карачаевск</h2>
             <button class="cards__button-like button" type="button"></button>
+            <button class="cards__delete button" type="button"></button>
           </li>
           <li class="cards__item">
             <img
@@ -44,11 +45,13 @@
             />
             <h2 class="cards__title">Гора Эльбрус</h2>
             <button class="cards__button-like button" type="button"></button>
+            <button class="cards__delete button" type="button"></button>
           </li>
           <li class="cards__item">
             <img class="cards__image" src="images/Домбай.png" alt="Домбай" />
             <h2 class="cards__title">Домбай</h2>
             <button class="cards__button-like button" type="button"></button>
+            <button class="cards__delete button" type="button"></button>
           </li>
           <li class="cards__item">
             <img
@@ -58,6 +61,7 @@
             />
             <h2 class="cards__title">Голубой лес</h2>
             <button class="cards__button-like button" type="button"></button>
+            <button class="cards__delete button" type="button"></button>
           </li>
           <li class="cards__item">
             <img
@@ -67,11 +71,13 @@
             />
             <h2 class="cards__title">Искрящийся круг</h2>
             <button class="cards__button-like button" type="button"></button>
+            <button class="cards__delete button" type="button"></button>
           </li>
           <li class="cards__item">
             <img class="cards__image" src="images/Свет.jpg" alt="Свет" />
             <h2 class="cards__title">Свет</h2>
             <button class="cards__button-like button" type="button"></button>
+            <button class="cards__delete button" type="button"></button>
           </li>
         </ul>
       </section>
@@ -79,11 +85,11 @@
     <footer class="footer">
       <p class="footer__project">© 2020 Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section class="popup popup_type_edit">
       <div class="popup__container">
         <h2 class="popup__heading">Редактировать профиль</h2>
         <button class="popup__button-close button" type="button"></button>
-        <form class="popup__form" name="form-profile">
+        <form class="popup__form popup__form_type_edit" name="form-profile">
           <fieldset class="popup__input-container">           
             <input
               class="popup__input popup__input_type_name"
@@ -103,7 +109,58 @@
           </fieldset>
         </form>
       </div>
+      
     </section>
-    <script src="./scripts/form.js"></script>
+    <section class="popup popup_type_new-card">
+      <div class="popup__container">
+        <h2 class="popup__heading">Новое место</h2>
+        <button class="popup__button-close button" type="button"></button>
+        <form class="popup__form popup__form_type__new-card" name="form-new-card">
+          <fieldset class="popup__input-container">           
+            <input
+              class="popup__input popup__input_type_place-name"
+              type="text"
+              placeholder="Название"
+              name="name"
+            />
+            <input
+              class="popup__input popup__input_type_image"
+              type="text"
+              placeholder="Ссылка на картинку"
+              name="link"
+            />
+            <button class="popup__button-save button" type="submit">
+              Сохранить
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup_type_image">
+      <div class="popup__container">    
+        <button class="popup__button-close button" type="button"></button>
+        <figure>
+          <img  class="popup__image" src="" alt="Каринка карточки">
+          <figcaption></figcaption>
+        </figure>
+        
+      </div>
+    </section>
+    <script src="./scripts/editPopup.js"></script>
+    <script src="./scripts/addCardPopup.js"></script>
+    <script src="./scripts/initialCard.js"></script>
+    
+    <template id="template-card">
+      <li class="cards__item">
+        <img
+          class="cards__image"
+          src=""
+          alt="Картинка"
+        />
+        <h2 class="cards__title"></h2>
+        <button class="cards__button-like button" type="button"></button>
+        <button class="cards__delete button" type="button"></button>
+      </li>
+    </template>
   </body>
 </html>
