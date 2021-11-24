@@ -25,7 +25,7 @@
         </div>
         <button class="profile__button-add button" type="button"></button>
       </section>
-      <section class="places">
+      <section class="places" aria-label="cards-list">
         <ul class="cards"></ul>
       </section>
     </main>
@@ -90,18 +90,20 @@
         </form>
       </div>
     </section>
-    <section class="popup popup_type_image">
-      <div class="popup__container">
+    <section class="popup popup_type_image" aria-label="popup-place">
+      <figure class="popup__image-container">
         <button class="popup__button-close button" type="button"></button>
-        <figure>
-          <img class="popup__image" src="" alt="Каринка карточки" />
-          <figcaption></figcaption>
-        </figure>
-      </div>
+        <img
+          class="popup__image"
+          src="images\ИскрящийсяКруг.jpg"
+          alt="Каринка карточки"
+        />
+        <figcaption class="popup__image-caption">gfgfggf</figcaption>
+      </figure>
     </section>
     <template class="template-card">
       <li class="cards__item">
-        <img class="cards__image" src="" alt="Картинка" />
+        <img class="cards__image" src="./" alt="Картинка" />
         <h2 class="cards__title"></h2>
         <button class="cards__like button" type="button"></button>
         <button class="cards__delete button" type="button"></button>
@@ -110,5 +112,6 @@
     <script src="./scripts/editPopup.js"></script>
     <script src="./scripts/initialCard.js"></script>
     <script src="./scripts/addCardPopup.js"></script>
+    <script src="./scripts/imagePopup.js"></script>
   </body>
 </html>
