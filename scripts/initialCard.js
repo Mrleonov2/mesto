@@ -25,7 +25,7 @@ const initialCards = [
   },
 ];
 const cards = document.querySelector(".cards");
-const formAddCard = document.querySelector(".popup__form_type__new-card");
+const formAddCard = document.querySelector(".popup__form_type_new-card");
 const inputLink = formAddCard.querySelector(".popup__input_type_image");
 const inputPlace = formAddCard.querySelector(
   ".popup__input_type_place-name"
