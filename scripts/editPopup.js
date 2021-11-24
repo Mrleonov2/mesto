@@ -11,9 +11,6 @@ const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
 
-inputName.value = profileName.textContent;
-inputJob.value = profileJob.textContent;
-
 function popupToggle() {
   popupEdit.classList.toggle("popup_opened");
 }
@@ -27,15 +24,11 @@ popupOpenBtn.addEventListener("click", popupToggle);
 popupEdit.addEventListener("click", clickOverlay);
 popupCloseBtn.addEventListener("click", popupToggle);
 
-function formSubmitHandler(evt) { 
+function formSubmitHandler(evt) {
   profileName.textContent = inputName.value;
-  profileJob.textContent = inputJob.value; 
+  profileJob.textContent = inputJob.value;
   popupToggle();
   evt.preventDefault();
 }
 // Эта строчка отменяет стандартную отправку формы.
 formElement.addEventListener("submit", formSubmitHandler);
-
-
-
-
