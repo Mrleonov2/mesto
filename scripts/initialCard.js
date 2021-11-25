@@ -27,21 +27,14 @@ const initialCards = [
 const cards = document.querySelector(".cards");
 const formAddCard = document.querySelector(".popup__form_type_new-card");
 const inputLink = formAddCard.querySelector(".popup__input_type_image");
-const inputPlace = formAddCard.querySelector(
-  ".popup__input_type_place-name"
-);
+const inputPlace = formAddCard.querySelector(".popup__input_type_place-name");
 //
 const popupImage = document.querySelector(".popup_type_image");
 const popupImageClose = popupImage.querySelector(".popup__button-close");
-function popupImageToggle() {
+function toggleImagePopup() {
   popupImage.classList.toggle("popup_opened");
 }
-popupImage.addEventListener('click',(event) => {
-  if(event.target.classList.contains('popup_type_image')){
-    popupImageToggle()
-  }
-})
-popupImageClose.addEventListener('click',popupImageToggle)
+
 //
 const createCard = (item) => {
   const cardTemplate = document.querySelector(".template-card").content;
@@ -56,30 +49,30 @@ const createCard = (item) => {
     const cardItem = event.target.closest(".cards__item");
     cardItem.remove();
   });
-  card.querySelector(".cards__image").addEventListener('click',(event) =>{
-    popupImageToggle()  
-    const srcLink = event.target.getAttribute('src')
+  card.querySelector(".cards__image").addEventListener("click", (event) => {
+    toggleImagePopup();
+    const srcLink = event.target.getAttribute("src");
     const modalImage = popupImage.querySelector(".popup__image");
     const capture = popupImage.querySelector(".popup__image-caption");
-      modalImage.src = srcLink
-      capture.textContent = event.target.getAttribute('alt')
-  })
+    modalImage.src = srcLink;
+    capture.textContent = event.target.getAttribute("alt");
+  });
   return card;
 };
 
-const complCard = initialCards.map((item) => {
+const renderedCards = initialCards.map((item) => {
   return createCard(item);
 });
-cards.prepend(...complCard);
-function formAddSubmitHandler(event) {
+cards.prepend(...renderedCards);
+function handleSubmitAddForm(event) {
+  event.preventDefault();
   const placeValue = inputPlace.value;
   const srcValue = inputLink.value;
   const newCard = createCard({ name: placeValue, link: srcValue });
   cards.prepend(newCard);
   inputPlace.value = "";
   inputLink.value = "";
-  popupAddToggle();
-  event.preventDefault();
+  toggleAddPopup();
 }
-formAddCard.addEventListener("submit", formAddSubmitHandler);
-
+formAddCard.addEventListener("submit", handleSubmitAddForm);
+popupImageClose.addEventListener("click", toggleImagePopup);
