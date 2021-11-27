@@ -24,5 +24,3 @@ formEdit.addEventListener("submit", handleSubmitForm);
 popupOpenBtn.addEventListener("click", toggleEditPopup);
 
 popupCloseBtn.addEventListener("click", toggleEditPopup);
-
-

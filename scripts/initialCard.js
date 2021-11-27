@@ -28,14 +28,12 @@ const cards = document.querySelector(".cards");
 const formAddCard = document.querySelector(".popup__form_type_new-card");
 const inputLink = formAddCard.querySelector(".popup__input_type_image");
 const inputPlace = formAddCard.querySelector(".popup__input_type_place-name");
-//
 const popupImage = document.querySelector(".popup_type_image");
 const popupImageClose = popupImage.querySelector(".popup__button-close");
 function toggleImagePopup() {
   popupImage.classList.toggle("popup_opened");
 }
 
-//
 const createCard = (item) => {
   const cardTemplate = document.querySelector(".template-card").content;
   const card = cardTemplate.querySelector(".cards__item").cloneNode(true);
