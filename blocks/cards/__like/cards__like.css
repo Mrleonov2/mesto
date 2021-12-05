@@ -8,5 +8,5 @@
   background: url("../../../images/LikeButton.svg") center/cover;
 }
 .cards__like:hover {
-  opacity:.5;
+  opacity: 0.5;
 }

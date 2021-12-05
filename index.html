@@ -47,14 +47,20 @@
               type="text"
               placeholder="Ф.И.О."
               name="name"
+              minlength='2'
+              maxlength='40'
+              required
             />
             <input
               class="popup__input popup__input_type_job"
               type="text"
               placeholder="О себе"
               name="job"
+              minlength='2'
+              maxlength='200'
+              required
             />
-            <button class="popup__button-save button" type="submit">
+            <button class="popup__submit button" type="submit">
               Сохранить
             </button>
           </fieldset>
@@ -76,14 +82,16 @@
               type="text"
               placeholder="Название"
               name="name"
+              required
             />
             <input
               class="popup__input popup__input_type_image"
-              type="text"
+              type="url"
               placeholder="Ссылка на картинку"
               name="link"
+              required
             />
-            <button class="popup__button-save button" type="submit">
+            <button class="popup__submit button" type="submit">
               Сохранить
             </button>
           </fieldset>

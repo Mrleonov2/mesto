@@ -9,16 +9,17 @@ const inputJob = popupEdit.querySelector(".popup__input_type_job");
 // Выберите элементы, куда должны быть вставлены значения полей
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
-
+/*/
 function toggleEditPopup() {
   popupEdit.classList.toggle("popup_opened");
-}
+}*/
 
 function handleSubmitForm(evt) {
+  evt.preventDefault();
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   toggleEditPopup();
-  evt.preventDefault();
+ 
 }
 formEdit.addEventListener("submit", handleSubmitForm);
 popupOpenBtn.addEventListener("click", toggleEditPopup);
