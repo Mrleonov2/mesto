@@ -42,24 +42,33 @@
           action="edir-profile"
         >
           <fieldset class="popup__input-container">
-            <input
-              class="popup__input popup__input_type_name"
-              type="text"
-              placeholder="Ф.И.О."
-              name="name"
-              minlength='2'
-              maxlength='40'
-              required
-            />
-            <input
-              class="popup__input popup__input_type_job"
-              type="text"
-              placeholder="О себе"
-              name="job"
-              minlength='2'
-              maxlength='200'
-              required
-            />
+            <label class="popup__form-label">
+              <input
+                class="popup__input popup__input_type_name"
+                type="text"
+                placeholder="Ф.И.О."
+                name="name"
+                minlength="2"
+                maxlength="40"
+                id="name-input"
+                required
+              />
+              <span class="popup__input-error name-input-error"></span>
+            </label>
+            <label class="popup__form-label">
+              <input
+                class="popup__input popup__input_type_job"
+                type="text"
+                placeholder="О себе"
+                name="job"
+                minlength="2"
+                maxlength="200"
+                id="job-input"
+                required
+              />
+              <span class="popup__input-error job-input-error"></span>
+            </label>
+
             <button class="popup__submit button" type="submit">
               Сохранить
             </button>
@@ -77,20 +86,29 @@
           action="add-card"
         >
           <fieldset class="popup__input-container">
-            <input
-              class="popup__input popup__input_type_place-name"
-              type="text"
-              placeholder="Название"
-              name="name"
-              required
-            />
-            <input
-              class="popup__input popup__input_type_image"
-              type="url"
-              placeholder="Ссылка на картинку"
-              name="link"
-              required
-            />
+            <label class="popup__form-label"
+              ><input
+                class="popup__input popup__input_type_place-name"
+                type="text"
+                placeholder="Название"
+                name="title"
+                id="title-input"
+                minlength="2"
+                maxlength="30"
+                required
+              /><span class="popup__input-error title-input-error"></span>
+            </label>
+            <label class="popup__form-label">
+              <input
+                class="popup__input popup__input_type_image"
+                type="url"
+                placeholder="Ссылка на картинку"
+                name="link"
+                id="image-url-input"
+                required
+              /><span class="popup__input-error image-url-input-error"></span>
+            </label>
+
             <button class="popup__submit button" type="submit">
               Сохранить
             </button>
@@ -120,5 +138,6 @@
     <script src="./scripts/editPopup.js"></script>
     <script src="./scripts/initialCard.js"></script>
     <script src="./scripts/addCardPopup.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
