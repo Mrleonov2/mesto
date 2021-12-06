@@ -1,4 +1,4 @@
-.cards{
+.cards {
   max-width: 880px;
   padding: 0;
   list-style: none;
@@ -9,13 +9,13 @@
   grid-template-rows: repeat(auto-fit, 361px);
   justify-content: center;
 }
-@media screen and (max-width:1024px){
-  .cards{
+@media screen and (max-width: 1024px) {
+  .cards {
     max-width: 88%;
   }
 }
-@media screen and (max-width:720px){
-  .cards{
+@media screen and (max-width: 720px) {
+  .cards {
     margin: 36px auto 48px;
   }
 }

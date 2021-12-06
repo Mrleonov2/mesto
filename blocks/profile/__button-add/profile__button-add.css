@@ -4,10 +4,11 @@
   width: 150px;
   margin-left: auto;
   border-radius: 2px;
-  background: black url('../../../images/CrossButton.svg') center/22px 22px no-repeat;
+  background: black url("../../../images/CrossButton.svg") center/22px 22px
+    no-repeat;
 }
 .profile__button-add:hover {
- opacity: .6;
+  opacity: 0.6;
 }
 @media screen and (max-width: 740px) {
   .profile__button-add {

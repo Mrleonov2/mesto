@@ -1,6 +1,5 @@
 const popupEdit = document.querySelector(".popup_type_edit");
 const popupOpenBtn = document.querySelector(".profile__button-edit");
-const popupCloseBtn = popupEdit.querySelector(".popup__button-close");
 // Находим форму в DOM
 const formEdit = document.querySelector(".popup__form_type_edit");
 // Находим поля формы в DOM
@@ -10,17 +9,12 @@ const inputJob = popupEdit.querySelector(".popup__input_type_job");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
-function toggleEditPopup() {
-  popupEdit.classList.toggle("popup_opened");
-}
-
-function handleSubmitForm(evt) {
+function handleEditForm(evt) {
+  evt.preventDefault();
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
-  toggleEditPopup();
-  evt.preventDefault();
+  togglePopup(0);
 }
-formEdit.addEventListener("submit", handleSubmitForm);
-popupOpenBtn.addEventListener("click", toggleEditPopup);
+formEdit.addEventListener("submit", handleEditForm);
+popupOpenBtn.addEventListener("click", () => togglePopup(0));
 
-popupCloseBtn.addEventListener("click", toggleEditPopup);

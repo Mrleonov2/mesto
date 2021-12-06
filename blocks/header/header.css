@@ -1,11 +1,11 @@
-.header{
+.header {
   max-width: 880px;
-  border-bottom: solid 1px rgb(84, 84, 84,.7);
+  border-bottom: solid 1px rgb(84, 84, 84, 0.7);
   min-height: 74px;
   margin: 45px auto 40px;
 }
-@media screen and (max-width:425px){
-  .header{
+@media screen and (max-width: 425px) {
+  .header {
     min-height: 56px;
     margin: 28px auto 42px;
   }
