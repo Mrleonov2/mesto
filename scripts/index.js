@@ -2,50 +2,54 @@ const initialCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+    alt:'Горы архыза'
   },
   {
     name: "Челябинская область",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+    alt:'Река в Челябинске'
   },
   {
     name: "Иваново",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+    alt:'Панельки Иваново'
   },
   {
     name: "Камчатка",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+    alt:'Плоскогорье на Камчатке'
   },
   {
     name: "Холмогорский район",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+    alt:'Железная дорога в Холмогорске'
   },
   {
     name: "Байкал",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+    alt:'Скала на Байкале'
   },
 ];
 const cards = document.querySelector(".cards");
 const formAddCard = document.querySelector(".popup__form_type_new-card");
 const inputLink = formAddCard.querySelector(".popup__input_type_image");
 const inputPlace = formAddCard.querySelector(".popup__input_type_place-name");
+const formAddSubmit = formAddCard.querySelector(".popup__submit");
 const popupImage = document.querySelector(".popup_type_image");
 const modalImage = popupImage.querySelector(".popup__image");
 const capture = popupImage.querySelector(".popup__image-caption");
+const cardTemplate = document.querySelector(".template-card").content;
 
 const createCard = (item) => {
-  const cardTemplate = document.querySelector(".template-card").content;
   const card = cardTemplate.querySelector(".cards__item").cloneNode(true);
   const cardTitle = card.querySelector(".cards__title");
 
-  let cardImage = card.querySelector(".cards__image");
+  const cardImage = card.querySelector(".cards__image");
   cardImage.src = item.link;
   cardTitle.textContent = item.name;
-  let textCapture = cardTitle.textContent;
+  cardImage.alt = item.alt
+  const textCapture = cardTitle.textContent;
   cardImage.setAttribute("data-title", `${textCapture}`);
-
-  card.querySelector(".cards__like").addEventListener("click", (event) => {
-    event.target.classList.toggle("cards__like_active");
-  });
   card.querySelector(".cards__delete").addEventListener("click", (event) => {
     const cardItem = event.target.closest(".cards__item");
     cardItem.remove();
@@ -71,13 +75,11 @@ function handleSubmitAddForm(event) {
   const newCard = createCard({ name: placeValue, link: srcValue });
   cards.prepend(newCard);
   formAddCard.reset();
-  formAddCard
-    .querySelector(".popup__submit")
-    .classList.add("popup__submit_disabled");
+  formAddSubmit.classList.add("popup__submit_disabled");
+  formAddSubmit.disabled = true;
   closePopup(popupAdd);
 }
 formAddCard.addEventListener("submit", handleSubmitAddForm);
-
 
 const popupEdit = document.querySelector(".popup_type_edit");
 const popupOpenBtn = document.querySelector(".profile__button-edit");
@@ -105,9 +107,11 @@ popupOpenBtn.addEventListener("click", () => {
 
 function openPopup(modal) {
   modal.classList.add("popup_opened");
+  document.addEventListener("keydown", pressEscape);
 }
 function closePopup(modal) {
   modal.classList.remove("popup_opened");
+  document.removeEventListener("keydown", pressEscape);
 }
 const popupAdd = document.querySelector(".popup_type_new-card");
 const popupAddOpenBtn = document.querySelector(".profile__button-add");
@@ -126,12 +130,14 @@ popups.forEach((popup) => {
   });
 });
 
-document.addEventListener("keydown", pressEscape);
-
 function pressEscape(event) {
   if (event.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
     closePopup(openedPopup);
-    event.target.removeEventListener("keydown", pressEscape);
   }
 }
+cards.addEventListener("click", (event) => {
+  if (event.target.classList.contains("cards__like")) {
+    event.target.classList.toggle("cards__like_active");
+  }
+});
