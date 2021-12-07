@@ -2,7 +2,7 @@ const showInputError = (
   formElement,
   inputElement,
   errorMessage,
-  { errorClass, inputErrorClass, errorInput }
+  { inputErrorClass, errorInput }
 ) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
@@ -13,7 +13,7 @@ const showInputError = (
 const hideInputError = (
   formElement,
   inputElement,
-  { errorClass, inputErrorClass, errorInput }
+  { inputErrorClass, errorInput }
 ) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(inputErrorClass);
@@ -24,19 +24,17 @@ const hideInputError = (
 const checkInputValidity = (
   formElement,
   inputElement,
-  { errorClass, inputErrorClass, errorInput }
+  { inputErrorClass, errorInput }
 ) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, {
-      errorClass,
       inputErrorClass,
-      errorInput
+      errorInput,
     });
   } else {
     hideInputError(formElement, inputElement, {
-      errorClass,
       inputErrorClass,
-      errorInput
+      errorInput,
     });
   }
 };
@@ -65,25 +63,24 @@ const setEventListeners = (
     submitButtonSelector,
     inactiveButtonClass,
     inputErrorClass,
-    errorClass,
-    errorInput
+
+    errorInput,
   }
 ) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   const submitButton = formElement.querySelector(submitButtonSelector);
 
   // чтобы проверить состояние кнопки в самом начале
-  toggleButtonState(inputList, submitButton,{inactiveButtonClass});
+  toggleButtonState(inputList, submitButton, { inactiveButtonClass });
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement,inputElement, {
-        errorClass,
+      checkInputValidity(formElement, inputElement, {
         inputErrorClass,
-        errorInput
+        errorInput,
       });
       // чтобы проверять его при изменении любого из полей
-      toggleButtonState(inputList, submitButton, {inactiveButtonClass});
+      toggleButtonState(inputList, submitButton, { inactiveButtonClass });
     });
   });
 };
@@ -95,7 +92,7 @@ const enableValidation = (config) => {
     submitButtonSelector,
     inactiveButtonClass,
     inputErrorClass,
-    errorClass,
+
     errorInput,
   } = config;
   const formList = Array.from(document.querySelectorAll(formSelector));
@@ -109,8 +106,8 @@ const enableValidation = (config) => {
       submitButtonSelector,
       inactiveButtonClass,
       inputErrorClass,
-      errorClass,
-      errorInput
+
+      errorInput,
     });
   });
 };
@@ -121,6 +118,6 @@ enableValidation({
   submitButtonSelector: ".popup__submit",
   inactiveButtonClass: "popup__submit_disabled",
   inputErrorClass: "popup__input_invalid",
-  errorClass: "`.${inputElement.id}-error`",
-  errorInput: "popup__input-error_active"
+
+  errorInput: "popup__input-error_active",
 });

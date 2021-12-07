@@ -9,7 +9,7 @@
   border-radius: 2px;
   border: 0;
 }
-.popup__submit:hover {
+.popup__submit:hover:enabled {
   opacity: 0.8;
 }
 @media screen and (max-width: 540px) {
