@@ -58,7 +58,7 @@ const createCard = (item) => {
     openPopup(popupImage);
 
     modalImage.src = event.target.getAttribute("src");
-
+    modalImage.alt = event.target.getAttribute("alt");
     capture.textContent = cardImage.getAttribute("data-title");
   });
   return card;
