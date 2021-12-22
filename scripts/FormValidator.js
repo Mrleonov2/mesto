@@ -63,7 +63,6 @@ const setEventListeners = (
     submitButtonSelector,
     inactiveButtonClass,
     inputErrorClass,
-
     errorInput,
   }
 ) => {
@@ -92,7 +91,6 @@ const enableValidation = (config) => {
     submitButtonSelector,
     inactiveButtonClass,
     inputErrorClass,
-
     errorInput,
   } = config;
   const formList = Array.from(document.querySelectorAll(formSelector));
@@ -106,7 +104,6 @@ const enableValidation = (config) => {
       submitButtonSelector,
       inactiveButtonClass,
       inputErrorClass,
-
       errorInput,
     });
   });
@@ -118,6 +115,12 @@ enableValidation({
   submitButtonSelector: ".popup__submit",
   inactiveButtonClass: "popup__submit_disabled",
   inputErrorClass: "popup__input_invalid",
-
   errorInput: "popup__input-error_active",
 });
+
+class FormValidator {
+  constructor(config){
+
+  }
+  
+}
