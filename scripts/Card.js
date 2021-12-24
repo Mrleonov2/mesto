@@ -6,6 +6,12 @@ import {cardTemplate,capture, popups, closePopup, openPopup, modalImage, popupIm
     this._image = item.link;
     this._alt = item.alt;
   }
+  _handleClickImage(evt){
+    openPopup(popupImage);
+      modalImage.src = evt.target.getAttribute("src");
+      modalImage.alt = evt.target.getAttribute("alt");
+      capture.textContent = evt.target.getAttribute("data-title");
+  }
   _getTemplate() {
     const card = cardTemplate.querySelector(".cards__item").cloneNode(true);
     return card;
@@ -14,36 +20,36 @@ import {cardTemplate,capture, popups, closePopup, openPopup, modalImage, popupIm
     this._element = this._getTemplate();
     this._setEventListeners();
     const cardTitle = this._element.querySelector(".cards__title");
-    const cardImage = this._element.querySelector(".cards__image");
-    cardImage.src = this._image;
+   const CardImage = this._element.querySelector(".cards__image");
+    CardImage.src = this._image;
     cardTitle.textContent = this._title;
-    cardImage.alt = this._alt;
+    CardImage.alt = this._alt;
     const textCapture = cardTitle.textContent;
-    cardImage.setAttribute("data-title", `${textCapture}`);
-    cardImage.addEventListener("click", (event) => {
-      openPopup(popupImage);
-      modalImage.src = event.target.getAttribute("src");
-      modalImage.alt = event.target.getAttribute("alt");
-      capture.textContent = cardImage.getAttribute("data-title");
-    });
+    CardImage.setAttribute("data-title", `${textCapture}`);
     return this._element;
   }
+  _likeCard(event){
+    event.target.classList.toggle("cards__like_active");
+  }
+_removeCard(){
+  this._element.remove();
+}
   _setEventListeners() {
+    this._element.querySelector('.cards__image').addEventListener("click", (evt) => {this._handleClickImage(evt)});
     this._element
       .querySelector(".cards__like")
-      .addEventListener("click", (event) => {
-        event.target.classList.toggle("cards__like_active");
-      });
+      .addEventListener("click", (event) => {this._likeCard(event)});
+      
     this._element
       .querySelector(".cards__delete")
       .addEventListener("click", () => {
-        this._element.remove();
+        this._removeCard()
       });
     popups.forEach((popup) => {
-      popup.addEventListener("click", (evt) => {
+      popup.addEventListener("click", (event) => {
         if (
-          evt.target.classList.contains("popup_opened") ||
-          evt.target.classList.contains("popup__button-close")
+          event.target.classList.contains("popup_opened") ||
+          event.target.classList.contains("popup__button-close")
         ) {
           closePopup(popup);
         }
