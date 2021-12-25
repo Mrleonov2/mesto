@@ -1,51 +1,49 @@
-
-import {initialCards} from "./data.js";
+import {
+  initialCards,
+  config,
+  cardTemplate,
+  popups,
+  cardsContainer,
+  formAddCard,
+  inputLink,
+  inputPlace,
+  formAddSubmit,
+  popupImage,
+  modalImage,
+  capture,
+  popupEdit,
+  popupEditOpenBtn,
+  formEdit,
+  inputName,
+  inputJob,
+  profileName,
+  profileJob,
+} from "./constants.js";
 import { Card } from "./Card.js";
-import { FormValidator, config } from "./FormValidator.js";
-const popups = document.querySelectorAll(".popup");
-const cards = document.querySelector(".cards");
-const formAddCard = document.querySelector(".popup__form_type_new-card");
-const inputLink = formAddCard.querySelector(".popup__input_type_image");
-const inputPlace = formAddCard.querySelector(".popup__input_type_place-name");
-const formAddSubmit = formAddCard.querySelector(".popup__submit");
-const popupImage = document.querySelector(".popup_type_image");
-const modalImage = popupImage.querySelector(".popup__image");
-const capture = popupImage.querySelector(".popup__image-caption");
-const cardTemplate = document.querySelector(".template-card").content;
-const popupEdit = document.querySelector(".popup_type_edit");
-const popupOpenBtn = document.querySelector(".profile__button-edit");
-// Находим форму в DOM
-const formEdit = document.querySelector(".popup__form_type_edit");
-// Находим поля формы в DOM
-const inputName = popupEdit.querySelector(".popup__input_type_name");
-const inputJob = popupEdit.querySelector(".popup__input_type_job");
-// Выберите элементы, куда должны быть вставлены значения полей
-const profileName = document.querySelector(".profile__name");
-const profileJob = document.querySelector(".profile__job");
+import { FormValidator } from "./FormValidator.js";
 
 function handleEditForm(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   closePopup(popupEdit);
-};
+}
 
-function handleSubmitAddForm(event) {
+function handleAddForm(event) {
   event.preventDefault();
-  const data = {name:inputPlace.value,link:inputLink.value}
+  const data = { name: inputPlace.value, link: inputLink.value };
   renderedCards(data);
-  
   formAddCard.reset();
   formAddSubmit.classList.add("popup__submit_disabled");
   formAddSubmit.disabled = true;
   closePopup(popupAdd);
 }
-popupOpenBtn.addEventListener("click", () => {
+popupEditOpenBtn.addEventListener("click", getProfileValues);
+function getProfileValues() {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
   openPopup(popupEdit);
-});
-
+}
 function openPopup(modal) {
   modal.classList.add("popup_opened");
   document.addEventListener("keydown", pressEscape);
@@ -64,23 +62,32 @@ function pressEscape(event) {
 const popupAdd = document.querySelector(".popup_type_new-card");
 const popupAddOpenBtn = document.querySelector(".profile__button-add");
 popupAddOpenBtn.addEventListener("click", () => openPopup(popupAdd));
-formAddCard.addEventListener("submit", handleSubmitAddForm);
+formAddCard.addEventListener("submit", handleAddForm);
 formEdit.addEventListener("submit", handleEditForm);
 //
 const renderedCards = (data) => {
-  const newCard = new Card(data, ".template-card");
+  const newCard = new Card(data, cardTemplate);
   const CardElement = newCard.generateCard();
-  cards.prepend(CardElement);
+  cardsContainer.prepend(CardElement);
 };
 
 initialCards.forEach((item) => {
   renderedCards(item);
 });
-const onValidFormAdd = new FormValidator(config,".popup__form_type_edit");
+const onValidFormAdd = new FormValidator(config, ".popup__form_type_edit");
 onValidFormAdd.enableValidation();
-const onValidFormEdit = new FormValidator(config,".popup__form_type_new-card");
+const onValidFormEdit = new FormValidator(config, ".popup__form_type_new-card");
 onValidFormEdit.enableValidation();
 //
-export {cards, cardTemplate,capture, popups, closePopup, openPopup, modalImage, popupImage};
+popups.forEach((popup) => {
+  popup.addEventListener("click", (event) => {
+    if (
+      event.target.classList.contains("popup_opened") ||
+      event.target.classList.contains("popup__button-close")
+    ) {
+      closePopup(popup);
+    }
+  });
+});
 
-
+export { capture, openPopup, modalImage, popupImage };
