@@ -1,17 +1,19 @@
-import { openPopup, modalImage, popupImage, capture } from "./index.js";
-class Card {
+import { openPopup, modalImage, popupImage, capture } from "../pages/index.js";
+ class Card {
   constructor(item, cardSelector) {
     this._cardSelector = cardSelector;
     this._title = item.name;
     this._image = item.link;
     this._alt = item.alt;
   }
-  _handleClickImage(evt) {
+
+  _handleCardClick(evt) {
     openPopup(popupImage);
     modalImage.src = evt.target.getAttribute("src");
     modalImage.alt = evt.target.getAttribute("alt");
     capture.textContent = evt.target.getAttribute("data-title");
   }
+
   _getTemplate() {
     const card = this._cardSelector
       .querySelector(".cards__item")
@@ -22,12 +24,12 @@ class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
     const cardTitle = this._element.querySelector(".cards__title");
-    const CardImage = this._element.querySelector(".cards__image");
-    CardImage.src = this._image;
+    const cardImage = this._element.querySelector(".cards__image");
+    cardImage.src = this._image;
     cardTitle.textContent = this._title;
-    CardImage.alt = this._alt;
+    cardImage.alt = this._alt;
     const textCapture = cardTitle.textContent;
-    CardImage.setAttribute("data-title", `${textCapture}`);
+    cardImage.setAttribute("data-title", `${textCapture}`);
     return this._element;
   }
   _likeCard(event) {
@@ -40,7 +42,7 @@ class Card {
     this._element
       .querySelector(".cards__image")
       .addEventListener("click", (evt) => {
-        this._handleClickImage(evt);
+        this._handleCardClick(evt);
       });
     this._element
       .querySelector(".cards__like")
@@ -55,4 +57,4 @@ class Card {
       });
   }
 }
-export { Card };
+export {Card}

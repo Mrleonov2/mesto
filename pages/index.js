@@ -18,9 +18,9 @@ import {
   inputJob,
   profileName,
   profileJob,
-} from "./constants.js";
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+} from "../utils/constants.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
 
 function handleEditForm(evt) {
   evt.preventDefault();
@@ -38,21 +38,21 @@ function handleAddForm(event) {
   formAddSubmit.disabled = true;
   closePopup(popupAdd);
 }
-popupEditOpenBtn.addEventListener("click", getProfileValues);
-function getProfileValues() {
+popupEditOpenBtn.addEventListener("click", getUserInfo);
+function getUserInfo() {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
   openPopup(popupEdit);
 }
 function openPopup(modal) {
   modal.classList.add("popup_opened");
-  document.addEventListener("keydown", pressEscape);
+  document.addEventListener("keydown", handleEscClose);
 }
 function closePopup(modal) {
   modal.classList.remove("popup_opened");
-  document.removeEventListener("keydown", pressEscape);
+  document.removeEventListener("keydown", handleEscClose);
 }
-function pressEscape(event) {
+function handleEscClose(event) {
   if (event.key === "Escape") {
     const openedPopup = document.querySelector(".popup_opened");
     closePopup(openedPopup);
