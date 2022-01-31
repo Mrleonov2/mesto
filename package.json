@@ -1,0 +1,20 @@
+{
+  "name": "def",
+  "version": "1.0.0",
+  "description": "Этот проект является прототипом Социальной Сети-Галереи\r В проекте используется javascript, реализованы формы-попапы\r Добавлен функционал проставления лайков, удаления ,добавления каточек\r [Ссылка на проект Mesto](https://mrleonov2.github.io/mesto/index.html)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mrleonov2/mesto.git"
+  },
+  "author": "Mihail Leonov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mrleonov2/mesto/issues"
+  },
+  "homepage": "https://github.com/Mrleonov2/mesto#readme",
+  "keywords": []
+}

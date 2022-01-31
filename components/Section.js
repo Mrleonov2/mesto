@@ -1,11 +1,11 @@
-class Secton{
-  constructor({data, renderer}, containerSelector){
-    this._container = document.querySelector(containerSelector);
+ class Section{
+  constructor({data, renderer}, container){
     this._renderedItems = data;
     this._renderer = renderer;
+    this._container = container;
   }
   addItem(element){
-    this._container.append(element);
+    this._container.prepend(element);
   }
   renderItems() {
     this._renderedItems.forEach(item => {
@@ -13,3 +13,4 @@ class Secton{
     });
   }
 }
+export {Section}
