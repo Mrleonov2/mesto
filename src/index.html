@@ -8,13 +8,17 @@
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="../images/logo.svg" alt="Логотип Место" />
+      <img
+        class="header__logo"
+        src="<%=require('../images/logo.svg')%>"
+        alt="Логотип Место"
+      />
     </header>
     <main class="content">
       <section class="profile">
         <img
           class="profile__avatar"
-          src="../images/ProfileImage.jpg"
+          src="<%=require('../images/ProfileImage.jpg')%>"
           alt="Аватар"
         />
         <div class="profile__info">
@@ -120,22 +124,22 @@
     <section class="popup popup_type_image" aria-label="popup-place">
       <figure class="popup__image-container">
         <button class="popup__button-close button" type="button"></button>
-        <img
-          class="popup__image"
-          src="./"
-          alt="Всплывающее изображение"
-        />
+        <img class="popup__image" src="./" alt="Всплывающее изображение" />
         <figcaption class="popup__image-caption"></figcaption>
       </figure>
     </section>
     <template class="template-card">
       <li class="cards__item">
-        <img class="cards__image" src="./" alt="Изображение карточки" data-title=""/>
+        <img
+          class="cards__image"
+          src="./"
+          alt="Изображение карточки"
+          data-title=""
+        />
         <h2 class="cards__title"></h2>
         <button class="cards__like button" type="button"></button>
         <button class="cards__delete button" type="button"></button>
       </li>
     </template>
-    
   </body>
 </html>

@@ -1,10 +1,10 @@
-import '../src/index.css';
+import "./index.css";
 import {
   initialCards,
   config,
   cardTemplate,
-  popups,
   cardsContainer,
+  formEdit,
   formAddCard,
   inputLink,
   inputPlace,
@@ -15,7 +15,6 @@ import {
   popupAdd,
   popupEdit,
   popupEditOpenBtn,
-  formEdit,
   popupAddOpenBtn,
   inputName,
   inputJob,
@@ -28,6 +27,7 @@ import { FormValidator } from "../components/FormValidator.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
+
 const ProfileInfo = new UserInfo({ profileName, profileJob });
 popupAddOpenBtn.addEventListener("click", () => formCardPopup.open());
 popupEditOpenBtn.addEventListener("click", () => {
@@ -76,6 +76,7 @@ const formCardPopup = new PopupWithForm({
     );
     const CardElement = newCard.generateCard();
     cardsList.addItem(CardElement);
+
     formAddSubmit.classList.add("popup__submit_disabled");
     formAddSubmit.disabled = true;
     formCardPopup.close();

@@ -1,5 +1,4 @@
 import { Popup } from "../components/Popup.js";
-import { onValidFormAdd,onValidFormEdit} from "../src/index.js"
 class PopupWithForm extends Popup {
   constructor({ popup, handleFormSubmit }) {
     super(popup);

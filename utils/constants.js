@@ -38,7 +38,6 @@ const config = {
   errorInput: "popup__input-error_active",
 };
 const cardTemplate = document.querySelector(".template-card").content;
-const popups = document.querySelectorAll(".popup");
 const cardsContainer = document.querySelector(".cards");
 const formAddCard = document.querySelector(".popup__form_type_new-card");
 const inputLink = formAddCard.querySelector(".popup__input_type_image");
@@ -64,7 +63,6 @@ export {
   initialCards,
   config,
   cardTemplate,
-  popups,
   cardsContainer,
   formAddCard,
   formAddSubmit,
