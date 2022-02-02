@@ -1,26 +1,30 @@
-import {Popup} from "../components/Popup.js"
+import { Popup } from "../components/Popup.js";
+import { onValidFormAdd,onValidFormEdit} from "../src/index.js"
 class PopupWithForm extends Popup {
-  constructor({popup, handleFormSubmit}){
-    this._popup = super(popup);
-    this._submitForm = handleFormSubmit;
+  constructor({ popup, handleFormSubmit }) {
+    super(popup);
+    this._popup = popup;
+    this._handleFormSubmit = handleFormSubmit;
+    this._form = this._popup.querySelector(".popup__form");
   }
-  close(){
-    super.close(this._popup);
-    this._popup.querySelector(".popup__form").reset();
-
-  }
-  _getInputValues(){
-    this._inputList = this._popup.querySelectorAll('.popup__input');
-    this._formValues = {};
-    this._inputList.forEach(input => this._formValues[input.name] = input.value);
+  close() {
+    super.close();
+    this._form.reset();
     
+    
+  }
+  _getInputValues() {
+    this._inputList  = this._form.querySelectorAll('.popup__input');
+    this._formValues = {name:this._inputList[0].value,link:this._inputList[1].value}
+
     return this._formValues;
   }
-  setEventListeners(){
+  setEventListeners() {
     super.setEventListeners();
-    this._handleFormSubmit(this._getInputValues());
-
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+    });
   }
-
 }
-export {PopupWithForm}
+export { PopupWithForm };

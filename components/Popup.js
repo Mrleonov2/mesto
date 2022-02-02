@@ -28,8 +28,9 @@ class Popup {
         event.target.classList.contains("popup__button-close")
       ) {
         this.close(this._popup);
+
       }
     });
   }
 }
-export {Popup}
+export { Popup };

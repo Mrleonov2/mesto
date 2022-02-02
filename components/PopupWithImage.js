@@ -1,17 +1,14 @@
-import {Popup} from "../components/Popup.js"
-import {modalImage, capture} from "../utils/constants.js";
+import { Popup } from "../components/Popup.js";
+import { modalImage, capture } from "../utils/constants.js";
 class PopupWithImage extends Popup {
-  constructor(popup){
+  constructor(popup) {
     super(popup);
   }
-  open(evt){
+  open(evt) {
     super.open(evt);
     modalImage.src = evt.target.getAttribute("src");
     modalImage.alt = evt.target.getAttribute("alt");
     capture.textContent = evt.target.getAttribute("data-title");
   }
-  close(){
-    super.close();
-  }
 }
-export {PopupWithImage}
+export { PopupWithImage };

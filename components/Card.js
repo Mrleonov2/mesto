@@ -1,4 +1,4 @@
-import { modalImage, popupImage, capture } from "../pages/index.js";
+
 class Card {
   constructor({ item, handleCardClick }, cardSelector) {
     this._cardSelector = cardSelector;
