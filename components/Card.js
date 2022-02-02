@@ -1,17 +1,11 @@
-import { openPopup, modalImage, popupImage, capture } from "../pages/index.js";
- class Card {
-  constructor(item, cardSelector) {
+
+class Card {
+  constructor({ item, handleCardClick }, cardSelector) {
     this._cardSelector = cardSelector;
     this._title = item.name;
     this._image = item.link;
     this._alt = item.alt;
-  }
-
-  _handleCardClick(evt) {
-    openPopup(popupImage);
-    modalImage.src = evt.target.getAttribute("src");
-    modalImage.alt = evt.target.getAttribute("alt");
-    capture.textContent = evt.target.getAttribute("data-title");
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -57,4 +51,4 @@ import { openPopup, modalImage, popupImage, capture } from "../pages/index.js";
       });
   }
 }
-export {Card}
+export { Card };
