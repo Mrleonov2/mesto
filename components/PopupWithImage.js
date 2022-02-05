@@ -1,14 +1,16 @@
 import { Popup } from "../components/Popup.js";
-import { modalImage, capture } from "../utils/constants.js";
+
 class PopupWithImage extends Popup {
   constructor(popup) {
     super(popup);
+    this._modImage = document.querySelector('.popup__image');
+    this._modCapture =  document.querySelector('.popup__image-caption');
   }
   open(evt) {
     super.open(evt);
-    modalImage.src = evt.target.getAttribute("src");
-    modalImage.alt = evt.target.getAttribute("alt");
-    capture.textContent = evt.target.getAttribute("data-title");
+    this._modImage.src = evt.target.getAttribute("src");
+    this._modImage.alt = evt.target.getAttribute("alt");
+    this._modCapture.textContent = evt.target.getAttribute("data-title");
   }
 }
 export { PopupWithImage };

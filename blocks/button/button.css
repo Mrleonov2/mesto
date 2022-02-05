@@ -2,3 +2,6 @@
   cursor: pointer;
   transition: .2s;
 }
+.button:disabled{
+  cursor:default;
+}

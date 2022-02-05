@@ -1,15 +1,15 @@
 
 class Card {
   constructor({ item, handleCardClick }, cardSelector) {
-    this._cardSelector = cardSelector;
-    this._title = item.name;
+    this._cardTemplate = document.querySelector(cardSelector).content ;
+    this._title = item.title;
     this._image = item.link;
     this._alt = item.alt;
     this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
-    const card = this._cardSelector
+    const card = this._cardTemplate
       .querySelector(".cards__item")
       .cloneNode(true);
     return card;

@@ -13,10 +13,11 @@ class PopupWithForm extends Popup {
     
   }
   _getInputValues() {
-    this._inputList  = this._form.querySelectorAll('.popup__input');
-    this._formValues = {name:this._inputList[0].value,link:this._inputList[1].value}
-
+    this._inputList = this._popup.querySelectorAll('.popup__input');
+    this._formValues = {};
+    this._inputList.forEach(input => this._formValues[input.name] = input.value);
     return this._formValues;
+    
   }
   setEventListeners() {
     super.setEventListeners();

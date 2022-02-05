@@ -1,31 +1,31 @@
 const initialCards = [
   {
-    name: "Архыз",
+    title: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
     alt: "Горы архыза",
   },
   {
-    name: "Челябинская область",
+    title: "Челябинская область",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
     alt: "Река в Челябинске",
   },
   {
-    name: "Иваново",
+    title: "Иваново",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
     alt: "Панельки Иваново",
   },
   {
-    name: "Камчатка",
+    title: "Камчатка",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
     alt: "Плоскогорье на Камчатке",
   },
   {
-    name: "Холмогорский район",
+    title: "Холмогорский район",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
     alt: "Железная дорога в Холмогорске",
   },
   {
-    name: "Байкал",
+    title: "Байкал",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
     alt: "Скала на Байкале",
   },
@@ -37,15 +37,14 @@ const config = {
   inputErrorClass: "popup__input_invalid",
   errorInput: "popup__input-error_active",
 };
-const cardTemplate = document.querySelector(".template-card").content;
+const cardTemplate = ".template-card";
 const cardsContainer = document.querySelector(".cards");
 const formAddCard = document.querySelector(".popup__form_type_new-card");
 const inputLink = formAddCard.querySelector(".popup__input_type_image");
 const inputPlace = formAddCard.querySelector(".popup__input_type_place-name");
 const formAddSubmit = formAddCard.querySelector(".popup__submit");
 const popupImage = document.querySelector(".popup_type_image");
-const modalImage = popupImage.querySelector(".popup__image");
-const capture = popupImage.querySelector(".popup__image-caption");
+
 const popupEdit = document.querySelector(".popup_type_edit");
 const popupEditOpenBtn = document.querySelector(".profile__button-edit");
 const popupAdd = document.querySelector(".popup_type_new-card");
@@ -67,8 +66,6 @@ export {
   formAddCard,
   formAddSubmit,
   popupImage,
-  modalImage,
-  capture,
   popupEdit,
   popupEditOpenBtn,
   formEdit,

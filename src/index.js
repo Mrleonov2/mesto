@@ -1,4 +1,4 @@
-import "./index.css";
+import "../pages/index.css";
 import {
   initialCards,
   config,
@@ -10,8 +10,6 @@ import {
   inputPlace,
   formAddSubmit,
   popupImage,
-  modalImage,
-  capture,
   popupAdd,
   popupEdit,
   popupEditOpenBtn,
@@ -28,34 +26,38 @@ import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 
-const ProfileInfo = new UserInfo({ profileName, profileJob });
-popupAddOpenBtn.addEventListener("click", () => formCardPopup.open());
+const profileInfo = new UserInfo({ profileName, profileJob });
+popupAddOpenBtn.addEventListener("click", () => {
+  validAdd.resetValidatiton();
+  formCardPopup.open();
+});
 popupEditOpenBtn.addEventListener("click", () => {
+  validEdit.resetValidatiton();
   formUserPopup.open();
-
-  const user = ProfileInfo.getUserInfo();
-
+  const user = profileInfo.getUserInfo();
   inputName.value = user.Name;
   inputJob.value = user.Job;
 });
 
-const imagePopup = new PopupWithImage(popupImage);
+const createCard = (data) => {
+  const newCard = new Card(
+    {
+      item: data,
+      handleCardClick: (evt) => {
+        imagePopup.open(evt);
+      },
+    },
+    cardTemplate
+  );
+  const cardElement = newCard.generateCard();
+  cardsList.addItem(cardElement);
+};
 
 const cardsList = new Section(
   {
     data: initialCards,
     renderer: (data) => {
-      const newCard = new Card(
-        {
-          item: data,
-          handleCardClick: (evt) => {
-            imagePopup.open(evt);
-          },
-        },
-        cardTemplate
-      );
-      const CardElement = newCard.generateCard();
-      cardsList.addItem(CardElement);
+      createCard(data);
     },
   },
   cardsContainer
@@ -65,18 +67,7 @@ cardsList.renderItems();
 const formCardPopup = new PopupWithForm({
   popup: popupAdd,
   handleFormSubmit: (formData) => {
-    const newCard = new Card(
-      {
-        item: formData,
-        handleCardClick: (evt) => {
-          imagePopup.open(evt);
-        },
-      },
-      cardTemplate
-    );
-    const CardElement = newCard.generateCard();
-    cardsList.addItem(CardElement);
-
+    createCard(formData);
     formAddSubmit.classList.add("popup__submit_disabled");
     formAddSubmit.disabled = true;
     formCardPopup.close();
@@ -85,16 +76,17 @@ const formCardPopup = new PopupWithForm({
 const formUserPopup = new PopupWithForm({
   popup: popupEdit,
   handleFormSubmit: () => {
-    ProfileInfo.setUserInfo();
+    profileInfo.setUserInfo();
     formUserPopup.close();
   },
 });
-
+const imagePopup = new PopupWithImage(popupImage);
 formCardPopup.setEventListeners();
 formUserPopup.setEventListeners();
 imagePopup.setEventListeners();
-const onValidFormAdd = new FormValidator(config, ".popup__form_type_edit");
-const onValidFormEdit = new FormValidator(config, ".popup__form_type_new-card");
-onValidFormEdit.enableValidation();
-onValidFormAdd.enableValidation();
-export { capture, modalImage, popupImage, onValidFormAdd, onValidFormEdit };
+const validEdit = new FormValidator(config, ".popup__form_type_edit");
+const validAdd = new FormValidator(config, ".popup__form_type_new-card");
+validEdit.enableValidation();
+validAdd.enableValidation();
+
+export { popupImage };
