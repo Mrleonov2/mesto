@@ -1,7 +1,7 @@
 class Api {
   constructor(baseUrl,headers) {
     this._baseUrl = baseUrl;
-    this._headers = headers;
+    this._tocken = headers.authorization;
   }
   getUserData(){
     return fetch(`${this._baseUrl}/me`, {
