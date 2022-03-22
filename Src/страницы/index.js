@@ -92,14 +92,3 @@ validAdd.enableValidation();
 
 export { popupImage };
 
-fetch('https://mesto.nomoreparties.co/v1/cohort-37/cards', {
-  headers: {
-    authorization: "ded2d1e6-c328-4460-ae09-846e4621c709",
-    "Content-Type": "application/json",
-  },
-}).then((res) => {
-  return res.json(); 
-}).then((data)=>{console.log(data);})
-.catch((err) => {
-  console.log(`Ошибка: ${err.status}`);
-});
