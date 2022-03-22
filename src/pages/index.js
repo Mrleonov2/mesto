@@ -25,7 +25,7 @@ import { FormValidator } from "../components/FormValidator.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
-import { WebpackError } from "webpack";
+
 
 const profileInfo = new UserInfo({ profileName, profileJob });
 popupAddOpenBtn.addEventListener("click", () => {
