@@ -1,0 +1,9 @@
+.profile__avatar-overlay {
+  height: 100%;
+}
+.profile__avatar-overlay:hover {
+  background: rgba(0, 0, 0, 0.8) url("../../../images/Avatar-edit.svg")
+    no-repeat center/22px 22px;
+  cursor: pointer;
+  
+}

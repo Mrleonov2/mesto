@@ -27,7 +27,7 @@ class Card {
     return this._element;
   }
   _likeCard(event) {
-    event.target.classList.toggle("cards__like_active");
+    event.currentTarget.classList.toggle("cards__like_active");
   }
   _removeCard() {
     this._element.remove();

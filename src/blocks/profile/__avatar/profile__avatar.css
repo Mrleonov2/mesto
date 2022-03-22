@@ -2,4 +2,6 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
+  background: url('../../../images/ProfileImage.jpg') center/120px 120px no-repeat;
+  
 }
