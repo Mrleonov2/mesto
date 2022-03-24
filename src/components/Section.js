@@ -1,15 +1,22 @@
  class Section{
-  constructor({data, renderer}, container){
-    this._renderedItems = data;
+  constructor({renderer}, container){
+    
     this._renderer = renderer;
     this._container = container;
   }
   addItem(element){
     this._container.prepend(element);
   }
-  renderItems() {
-    this._renderedItems.forEach(item => {
-      this._renderer(item);
+  renderItems(renderedItems) {
+    renderedItems.forEach((res) => {
+      this._renderer({
+        name: res.name,
+        link: res.link,
+        likes: res.likes,
+        id: res._id,     
+        owner: {_id:res.owner._id}
+        
+      });
     });
   }
 }

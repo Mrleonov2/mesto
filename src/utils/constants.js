@@ -1,35 +1,3 @@
-const initialCards = [
-  {
-    title: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    alt: "Горы архыза",
-  },
-  {
-    title: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    alt: "Река в Челябинске",
-  },
-  {
-    title: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    alt: "Панельки Иваново",
-  },
-  {
-    title: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    alt: "Плоскогорье на Камчатке",
-  },
-  {
-    title: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    alt: "Железная дорога в Холмогорске",
-  },
-  {
-    title: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    alt: "Скала на Байкале",
-  },
-];
 const config = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__submit",
@@ -54,12 +22,15 @@ const formEdit = document.querySelector(".popup__form_type_edit");
 // Находим поля формы в DOM
 const inputName = popupEdit.querySelector(".popup__input_type_name");
 const inputJob = popupEdit.querySelector(".popup__input_type_job");
+const popupAvatar = document.querySelector(".popup_type_avatar");
+const inputAvatar = popupAvatar.querySelector(".popup__input");
 // Выберите элементы, куда должны быть вставлены значения полей
-const profileName = document.querySelector(".profile__name");
-const profileJob = document.querySelector(".profile__job");
-
+const nameElement = document.querySelector(".profile__name");
+const jobElement = document.querySelector(".profile__job");
+const avatarElement = document.querySelector(".profile__avatar"); 
+const PopupEditAvatarBtn = document.querySelector(".profile__avatar-overlay");
+const deletePopup = document.querySelector(".popup_confirmation-of-deletion");
 export {
-  initialCards,
   config,
   cardTemplate,
   cardsContainer,
@@ -73,8 +44,13 @@ export {
   inputJob,
   inputLink,
   inputPlace,
-  profileName,
-  profileJob,
+  nameElement,
+  jobElement,
+  avatarElement,
   popupAdd,
   popupAddOpenBtn,
+  PopupEditAvatarBtn,
+  popupAvatar,
+  inputAvatar,
+  deletePopup
 };
