@@ -16,12 +16,18 @@
     </header>
     <main class="content">
       <section class="profile">
-        
-          <div class="profile__avatar"><div class="profile__avatar-overlay"></div></div>
-        
+        <picture class="profile__avatar-contatiner">
+          <img
+            class="profile__avatar"
+            src="https://"
+            alt="Аватар"
+          />
+          <div class="profile__avatar-overlay"></div>
+        </picture>
+
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <h2 class="profile__job">Исследователь океана</h2>
+          <h1 class="profile__name"></h1>
+          <h2 class="profile__job"></h2>
           <button class="profile__button-edit button" type="button"></button>
         </div>
         <button class="profile__button-add button" type="button"></button>
@@ -94,7 +100,7 @@
                 class="popup__input popup__input_type_place-name"
                 type="text"
                 placeholder="Название"
-                name="title"
+                name="name"
                 id="title-input"
                 minlength="2"
                 maxlength="30"
@@ -112,9 +118,7 @@
               /><span class="popup__input-error image-url-input-error"></span>
             </label>
 
-            <button class="popup__submit button" type="submit">
-              Сохранить
-            </button>
+            <button class="popup__submit button" type="submit">Создать</button>
           </fieldset>
         </form>
       </div>
@@ -130,16 +134,17 @@
       <div class="popup__container">
         <h2 class="popup__heading">Обновить аватар</h2>
         <button class="popup__button-close button" type="button"></button>
-        <form class="popup__form" name="avatar-updata" action="" novalidate>
+        <form class="popup__form popup__form_type_avatar" name="avatar-updata" action="" novalidate>
           <fieldset class="popup__input-container">
             <input
-              class="popup__input popup__input_type_image"
+              class="popup__input popup__input_type_avatar"
               type="url"
               placeholder="Ссылка на картинку"
               name="avatar"
-              id="avatar-url-input"
+              id="avatar-input"
+              minlength="2"
               required
-            /><span class="popup__input-error image-url-input-error"></span>
+            /><span class="popup__input-error avatar-input-error"></span>
 
             <button class="popup__submit button" type="submit">
               Сохранить
@@ -151,7 +156,7 @@
     <section class="popup popup_confirmation-of-deletion">
       <div class="popup__container">
         <button class="popup__button-close button" type="button"></button>
-        <form class="popup__form" name="avatar-updata" action="" novalidate>
+        <form class="popup__form" name="" action="" novalidate>
           <fieldset class="popup__input-container">
             <h2 class="popup__heading popup__remove">Вы уверены?</h2>
             <button class="popup__submit button" type="submit">Да</button>
@@ -170,7 +175,7 @@
         <h2 class="cards__title"></h2>
         <button class="cards__like button" type="button"></button>
         <button class="cards__delete button" type="button"></button>
-        <div class="cards__like-count">9</div>
+        <div class="cards__like-count">0</div>
       </li>
     </template>
   </body>
