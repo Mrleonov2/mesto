@@ -17,6 +17,7 @@ this._avatar = profileAvatar;
     this._name.textContent = name;
     this._job.textContent = about;
     this._avatar.src = avatar;
+    
 
   }
   getAvatarSrc(){

@@ -30,6 +30,7 @@ const jobElement = document.querySelector(".profile__job");
 const avatarElement = document.querySelector(".profile__avatar"); 
 const PopupEditAvatarBtn = document.querySelector(".profile__avatar-overlay");
 const deletePopup = document.querySelector(".popup_confirmation-of-deletion");
+const popupAvatarSubmit = popupAvatar.querySelector('.popup__submit')
 export {
   config,
   cardTemplate,
@@ -52,5 +53,6 @@ export {
   PopupEditAvatarBtn,
   popupAvatar,
   inputAvatar,
-  deletePopup
+  deletePopup,
+  popupAvatarSubmit
 };

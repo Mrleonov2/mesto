@@ -4,19 +4,13 @@
     this._renderer = renderer;
     this._container = container;
   }
-  addItem(element){
-    this._container.prepend(element);
+  addItem(item){
+   
+    this._container.prepend(item);
   }
-  renderItems(renderedItems) {
-    renderedItems.forEach((res) => {
-      this._renderer({
-        name: res.name,
-        link: res.link,
-        likes: res.likes,
-        id: res._id,     
-        owner: {_id:res.owner._id}
-        
-      });
+  renderItems(Items) {
+    Items.forEach((res) => {
+      this._renderer(res);
     });
   }
 }

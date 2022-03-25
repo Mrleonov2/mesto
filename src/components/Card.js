@@ -1,7 +1,11 @@
-
-
 class Card {
-  constructor(itemData, handleImageClick, handleDeleteClick,handleLikeClick ,cardSelector) {
+  constructor(
+    itemData,
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick,
+    cardSelector
+  ) {
     this._cardTemplateSelector = cardSelector;
     this._name = itemData.name;
     this._link = itemData.link;
@@ -10,9 +14,9 @@ class Card {
     this._handleLikeClick = handleLikeClick;
     this._likes = itemData.likes;
     this._id = itemData.id;
-    this._ownerId = itemData.owner;
+    this._ownerId = itemData.ownerId;
     this._userId = itemData.userId;
-    console.log(this._userId)
+   
   }
 
   _getTemplate() {
@@ -24,6 +28,8 @@ class Card {
   }
   generateCard() {
     this._element = this._getTemplate();
+    this._likeIcon = this._element.querySelector(".cards__like")
+    this._likeCountElement = this._element.querySelector(".cards__like-count");
     this._setEventListeners();
     this._title = this._element.querySelector(".cards__title");
     this._image = this._element.querySelector(".cards__image");
@@ -33,22 +39,23 @@ class Card {
     const textCapture = this._title.textContent;
     this._image.setAttribute("data-title", `${textCapture}`);
 
-    
-    if(this._ownerId !== this._userId) {
-      this._element.querySelector(".cards__delete").style.display = 'none'
+    if (this._ownerId !== this._userId) {
+      this._element.querySelector(".cards__delete").style.display = "none";
     }
-    
+
     return this._element;
   }
   _fillLike() {
-    this._element.querySelector(".cards__like").classList.add("cards__like_active");
+    this._likeIcon.classList.add("cards__like_active");
   }
-  _removeLike(){
-    this._element.querySelector(".cards__like").classList.remove("cards__like_active");
+  _removeLike() {
+    this._likeIcon.classList.remove("cards__like_active");
   }
   isLiked() {
-    const userHasLikedCard = this._likes.find(user => user._id === this._userId)
-    return userHasLikedCard
+    const userHasLikedCard = this._likes.find(
+      (user) => user._id === this._userId
+    );
+    return userHasLikedCard;
   }
   removeCard() {
     this._element.remove();
@@ -56,13 +63,16 @@ class Card {
   }
   setLikes(newlikes) {
     this._likes = newlikes;
-    this._likeCountElement = this._element.querySelector(".cards__like-count");
+    
     this._likeCountElement.textContent = this._likes.length;
-    if(this.isLiked()){this._fillLike()}else{
-      this._removeLike()
+    if (this.isLiked()) {
+      this._fillLike();
+    } else {
+      this._removeLike();
     }
   }
   _setEventListeners() {
+    
     this._element
       .querySelector(".cards__image")
       .addEventListener("click", (evt) => {
@@ -71,7 +81,7 @@ class Card {
     this._element
       .querySelector(".cards__like")
       .addEventListener("click", () => {
-        this._handleLikeClick(this._id)
+        this._handleLikeClick(this._id);
       });
 
     this._element
