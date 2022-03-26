@@ -16,7 +16,6 @@ class Card {
     this._id = itemData.id;
     this._ownerId = itemData.ownerId;
     this._userId = itemData.userId;
-   
   }
 
   _getTemplate() {
@@ -28,7 +27,7 @@ class Card {
   }
   generateCard() {
     this._element = this._getTemplate();
-    this._likeIcon = this._element.querySelector(".cards__like")
+    this._likeIcon = this._element.querySelector(".cards__like");
     this._likeCountElement = this._element.querySelector(".cards__like-count");
     this._setEventListeners();
     this._title = this._element.querySelector(".cards__title");
@@ -63,7 +62,7 @@ class Card {
   }
   setLikes(newlikes) {
     this._likes = newlikes;
-    
+
     this._likeCountElement.textContent = this._likes.length;
     if (this.isLiked()) {
       this._fillLike();
@@ -72,7 +71,6 @@ class Card {
     }
   }
   _setEventListeners() {
-    
     this._element
       .querySelector(".cards__image")
       .addEventListener("click", (evt) => {

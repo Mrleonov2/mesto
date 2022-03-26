@@ -9,11 +9,6 @@ import {
   config,
   cardTemplate,
   cardsContainer,
-  formEdit,
-  formAddCard,
-  inputLink,
-  inputPlace,
-  
   popupImage,
   popupAdd,
   popupEdit,
@@ -24,26 +19,22 @@ import {
   nameElement,
   jobElement,
   avatarElement,
-  PopupEditAvatarBtn,
+  popupEditAvatarBtn,
   popupAvatar,
-  inputAvatar,
   deletePopup,
-  
 } from "../utils/constants.js";
 import "./index.css";
 
 let userId;
 Promise.all([api.getProfile(), api.getInitialCards()])
   .then(([userData, cards]) => {
-      profileInfo.setUserInfo(userData.name, userData.about, userData.avatar);
-  userId = userData._id;
-      cardsList.renderItems(cards)
+    profileInfo.setUserInfo(userData.name, userData.about, userData.avatar);
+    userId = userData._id;
+    cardsList.renderItems(cards);
   })
-  .catch(err => {
-    console.log(err)
+  .catch((err) => {
+    console.log(err);
   });
-
-
 
 const profileInfo = new UserInfo({
   profileName: nameElement,
@@ -71,27 +62,36 @@ const createCard = (data) => {
     (id) => {
       confirmDeletePopup.open();
       confirmDeletePopup.changeSubmitHandler(() => {
-        api.deleteCard(id).then(() => {
-          newCard.removeCard();
-          confirmDeletePopup.close();
-        }).catch(err => {
-          console.log(err)
-        });
+        api
+          .deleteCard(id)
+          .then(() => {
+            newCard.removeCard();
+            confirmDeletePopup.close();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
     },
     (id) => {
       if (newCard.isLiked()) {
-        api.deleteLike(id).then((res) => {
-          newCard.setLikes(res.likes);
-        }).catch(err => {
-          console.log(err)
-        });
+        api
+          .deleteLike(id)
+          .then((res) => {
+            newCard.setLikes(res.likes);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
-        api.addLike(id).then((res) => {
-          newCard.setLikes(res.likes);
-        }).catch(err => {
-          console.log(err)
-        });
+        api
+          .addLike(id)
+          .then((res) => {
+            newCard.setLikes(res.likes);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },
     cardTemplate
@@ -106,7 +106,7 @@ const cardsList = new Section(
         name: data.name,
         link: data.link,
         likes: data.likes,
-        id: data._id,     
+        id: data._id,
         ownerId: data.owner._id,
         userId: userId,
       });
@@ -117,74 +117,75 @@ const cardsList = new Section(
 const formCardPopup = new PopupWithForm({
   popup: popupAdd,
   handleFormSubmit: (formData) => {
-    formCardPopup.renderLoading(true)
-    api.addCard(formData.name, formData.link).then((res) => {
-      createCard({
-        name: res.name,
-        link: res.link,
-        likes: res.likes,
-        id: res._id,
-        ownerId: res.owner._id,
-        userId: userId,
+    formCardPopup.renderLoading(true);
+    api
+      .addCard(formData.name, formData.link)
+      .then((res) => {
+        createCard({
+          name: res.name,
+          link: res.link,
+          likes: res.likes,
+          id: res._id,
+          ownerId: res.owner._id,
+          userId: userId,
+        });
+
+        formCardPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        formCardPopup.renderLoading(false, "Создать");
       });
-      
-      formCardPopup.submitDisabled();
-    formCardPopup.close();
-    }).catch(err => {
-      console.log(err)
-    }).finally(()=>{formCardPopup.renderLoading(false,'Создать')});
-    
   },
 });
 const formUserPopup = new PopupWithForm({
   popup: popupEdit,
   handleFormSubmit: (inputData) => {
-    formUserPopup.renderLoading(true)
-    api.editProfile(inputData.name, inputData.about).then(() => {
-      profileInfo.setUserInfo(
-        inputData.name,
-        inputData.about,
-        avatarElement.src
-      );
-      
-      formUserPopup.submitDisabled()
-      formUserPopup.close();
-    }).catch(err => {
-      console.log(err)
-    }).finally(()=>{formUserPopup.renderLoading(false,'Сохранить')});
+    formUserPopup.renderLoading(true);
+    api
+      .editProfile(inputData.name, inputData.about)
+      .then((res) => {
+        profileInfo.setUserInfo(res.name, res.about, res.avatar);
+
+        formUserPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        formUserPopup.renderLoading(false, "Сохранить");
+      });
   },
 });
 const imagePopup = new PopupWithImage(popupImage);
 const editAvatarPopup = new PopupWithForm({
   popup: popupAvatar,
   handleFormSubmit: (inputValue) => {
-    editAvatarPopup.renderLoading(true)
-    api.updateAvatar(inputValue.avatar).then(() => {
-      profileInfo.setUserInfo(
-        nameElement.textContent,
-        jobElement.textContent,
-        inputValue.avatar
-      );
-      
-      editAvatarPopup.submitDisabled()
-      editAvatarPopup.close();
-      
-    }).catch(err => {
-      console.log(err)
-    }).finally(()=>{editAvatarPopup.renderLoading(false,'Сохранить')})
+    editAvatarPopup.renderLoading(true);
+    api
+      .updateAvatar(inputValue.avatar)
+      .then((res) => {
+        profileInfo.setUserInfo(res.name, res.about, res.avatar);
+
+        editAvatarPopup.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        editAvatarPopup.renderLoading(false, "Сохранить");
+      });
   },
 });
 
 const confirmDeletePopup = new PopupWithForm({
   popup: deletePopup,
-  handleFormSubmit: () => {
-    api.deleteCard(id).catch(err => {
-      console.log(err)
-    });;
-  },
+  handleFormSubmit: () => {},
 });
 
-PopupEditAvatarBtn.addEventListener("click", () => {
+popupEditAvatarBtn.addEventListener("click", () => {
   validAvatar.resetValidatiton();
   editAvatarPopup.open();
 });
@@ -199,4 +200,3 @@ const validAdd = new FormValidator(config, ".popup__form_type_new-card");
 validEdit.enableValidation();
 validAvatar.enableValidation();
 validAdd.enableValidation();
-export { popupImage };

@@ -4,8 +4,8 @@ class PopupWithImage extends Popup {
   constructor(popup) {
     super(popup);
     this.popup = popup;
-    this._modImage = this.popup.querySelector('.popup__image');
-    this._modCapture =  this.popup.querySelector('.popup__image-caption');
+    this._modImage = this.popup.querySelector(".popup__image");
+    this._modCapture = this.popup.querySelector(".popup__image-caption");
   }
   open(evt) {
     super.open(evt);

@@ -1,17 +1,15 @@
- class Section{
-  constructor({renderer}, container){
-    
+class Section {
+  constructor({ renderer }, container) {
     this._renderer = renderer;
     this._container = container;
   }
-  addItem(item){
-   
+  addItem(item) {
     this._container.prepend(item);
   }
-  renderItems(Items) {
-    Items.forEach((res) => {
+  renderItems(items) {
+    items.forEach((res) => {
       this._renderer(res);
     });
   }
 }
-export {Section}
+export { Section };
